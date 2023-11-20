@@ -71,8 +71,8 @@ ansible-playbook -i hosts playbook.yaml
 Результат выполнения: 
 ![.](https://github.com/OlgaGladushko/2023_2024-network_programming-k34202-gladushko_o_v/blob/main/lab2/imgs/play_recup.jpg) 
 Все три таски с изменением конфигурации роутеров были успешно выполнены. Также и вывелись собранные файкты, часть вывода: 
-![.](https://github.com/OlgaGladushko/2023_2024-network_programming-k34202-gladushko_o_v/blob/main/lab2/imgs/debug_output.jpg)   
-С пмомощью вывода команды ```export``` можно увидеть, что все команды были успешно добавлены на роутеры:
+![.](https://github.com/OlgaGladushko/2023_2024-network_programming-k34202-gladushko_o_v/blob/main/lab2/imgs/debug_output.jpg)      
+  С пмомощью вывода команды ```export``` можно увидеть, что все команды были успешно добавлены на роутеры:
 ![.](https://github.com/OlgaGladushko/2023_2024-network_programming-k34202-gladushko_o_v/blob/main/lab2/imgs/export.jpg) 
 На роутерах были выведены пользователи, как видно, новый пользоввтель chr_user был добавлен: 
 ![.](https://github.com/OlgaGladushko/2023_2024-network_programming-k34202-gladushko_o_v/blob/main/lab2/imgs/user.jpg) 
