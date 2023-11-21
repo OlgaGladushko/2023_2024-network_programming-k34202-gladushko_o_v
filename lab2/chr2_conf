@@ -1,0 +1,33 @@
+# 2023-11-19 18:59:50 by RouterOS 7.11
+# software id = 
+#
+/interface bridge
+add name=lo
+/interface ovpn-client
+add certificate=profile-2911819600397950179.ovpn_1 cipher=aes256-cbc connect-to=\
+    84.201.177.192 mac-address=02:96:88:61:0E:18 name=ovpn-out1 port=443 user=\
+    vladislav
+/disk
+set slot1 slot=slot1 type=hardware
+set slot2 slot=slot2 type=hardware
+set slot3 slot=slot3 type=hardware
+/interface wireless security-profiles
+set [ find default=yes ] supplicant-identity=MikroTik
+/routing ospf instance
+add disabled=no name=ospf-1 router-id=10.10.10.2
+/routing ospf area
+add disabled=no instance=ospf-1 name=backbone
+/ip address
+add address=10.10.10.2 interface=lo network=10.10.10.2
+/ip dhcp-client
+add interface=ether1
+/ip ssh
+set always-allow-password-login=yes
+/routing ospf interface-template
+add area=backbone disabled=no networks=0.0.0.0/0
+/system note
+set show-at-login=no
+/system ntp client
+set enabled=yes
+/system ntp client servers
+add address=0.ru.pool.ntp.org
