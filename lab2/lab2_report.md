@@ -84,5 +84,5 @@ ansible-playbook -i hosts playbook.yaml
 ![.](https://github.com/OlgaGladushko/2023_2024-network_programming-k34202-gladushko_o_v/blob/main/lab2/imgs/ping.jpg) 
 Полные конфигурации устройств, собранные командой export: [chr1](https://github.com/OlgaGladushko/2023_2024-network_programming-k34202-gladushko_o_v/blob/main/lab2/chr1_conf), [chr2](https://github.com/OlgaGladushko/2023_2024-network_programming-k34202-gladushko_o_v/blob/main/lab2/chr2_conf).
 ### Вывод  
-В ходе лабораторной работы были настроены CHR с помощью ansible. Были созданы два файла: инвентори-файл и плейбук. С пмощью прописанных команд на роутерах были настроены: логин/пароль для нового пользователя, NTP client, ospf с указанием router id, а также были побраны данные настройки роутеров. Схема сети, полученная в результате выполнения работы: 
+В ходе лабораторной работы были настроены CHR с помощью ansible. Были созданы два файла: inventory-файл и playbook. С помощью прописанных команд на роутерах были настроены: логин/пароль для нового пользователя, NTP client, ospf с указанием router id, а также были побраны данные настройки роутеров. Схема сети, полученная в результате выполнения работы: 
 ![.](https://github.com/OlgaGladushko/2023_2024-network_programming-k34202-gladushko_o_v/blob/main/lab2/imgs/lab2.drawio.png)
