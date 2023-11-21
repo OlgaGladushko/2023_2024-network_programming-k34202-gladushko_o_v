@@ -29,7 +29,7 @@ ansible_network_os=community.routeros.routeros
 ansible_user=admin
 ansible_ssh_pass=123
 ``` 
-Далее был создан playbook, с помощью которого на роутерах должен быть создан новый пользователь, настроен ntp client, настоен ospf с указанием router id – rid, указанный выше. Также были собраны факты об интерфейсах, чтобы вывести на экран при запуске плейбука. Файл playbook содержит следующие команды: 
+Далее был создан playbook, с помощью которого на роутерах должен быть создан новый пользователь, настроен ntp client, настоен ospf с указанием router id – rid, указанный выше. Также были собраны факты об интерфейсах, чтобы вывести их на экран при запуске плейбука. Файл playbook содержит следующие команды: 
 ``` 
 - name:  chr_conf
   hosts: chrs
@@ -70,7 +70,7 @@ ansible-playbook -i hosts playbook.yaml
 ``` 
 Результат выполнения: 
 ![.](https://github.com/OlgaGladushko/2023_2024-network_programming-k34202-gladushko_o_v/blob/main/lab2/imgs/play_recup.jpg) 
-Все три таски с изменением конфигурации роутеров были успешно выполнены. Также и вывелись собранные файкты, часть вывода: 
+Все три таски с изменением конфигурации роутеров были успешно выполнены. Также и вывелись собранные факты, часть вывода: 
 ![.](https://github.com/OlgaGladushko/2023_2024-network_programming-k34202-gladushko_o_v/blob/main/lab2/imgs/debug_output.jpg)      
   С пмомощью вывода команды ```export``` можно увидеть, что все команды были успешно добавлены на роутеры:
 ![.](https://github.com/OlgaGladushko/2023_2024-network_programming-k34202-gladushko_o_v/blob/main/lab2/imgs/export.jpg) 
