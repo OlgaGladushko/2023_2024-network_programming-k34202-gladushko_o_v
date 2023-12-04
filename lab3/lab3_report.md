@@ -109,4 +109,27 @@ ansible-inventory -v --list -y -i netbox_inventory.yml > nb_inventory.yml
 ```
 Обе таски были успешно выполнены, как можно увидеть ниже, именя устройств изменились (раньше они азывались MikroTik), а также добавились имена на новый созданный интерфейс:  
 ![.](https://github.com/OlgaGladushko/2023_2024-network_programming-k34202-gladushko_o_v/blob/main/lab3/imgs/chr1.jpg) ![.](https://github.com/OlgaGladushko/2023_2024-network_programming-k34202-gladushko_o_v/blob/main/lab3/imgs/CHR2.jpg)  
-
+Далее playbook был изменен для того, чтобы собрать серийный номер каждого устройства и внести его в Netbox:  
+```
+- name: Serial Numbers
+  hosts: devices
+  tasks:
+    - name: Serial Number
+      community.routeros.command:
+        commands:
+          - /system license print
+      register: license
+    - name: Add Serial Number
+      netbox_device:
+        netbox_url: http://130.193.42.42:8080/
+        netbox_token: созданный_токен
+        data:
+          name: "{{interfaces[0].device.name}}"
+          serial: "{{license.stdout_lines[0][0].split(' ').1}}"
+        state: present
+        validate_certs: False
+```
+Для выполнения плэйбука потребовалось установить дополнительный модуль python3-pynetbox. После этого таски успешно выполнились. В веб-интерфейсе Netbox можно увидеть добавленный серийный номер для каждого CHR:  
+![.](https://github.com/OlgaGladushko/2023_2024-network_programming-k34202-gladushko_o_v/blob/main/lab3/imgs/chr1_sn.jpg) ![.](https://github.com/OlgaGladushko/2023_2024-network_programming-k34202-gladushko_o_v/blob/main/lab3/imgs/CHR2_sn.jpg)  
+### Вывод  
+В ходе лабораторной работы была собрана информация об устройствах и сохранена в отдельном файле с помощью Ansible и Netbox, а также была произведена настройка CHR на основе собранных данных.
