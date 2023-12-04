@@ -73,4 +73,40 @@ sudo systemctl restart nginx
 ```
 Настроить Netbox можно в браузере по указанному адресу и номера порта, также необходимо указать имя созданного суперпользователя и пароль.
 В веб-интерфейсе был создан сайт, мануфактура, тип устройства, функция устройства, а далее само устройство – chr1 и CHR2. Для указания IP-адресов устройств необходиом было создать интерфейсы и IP-адреса. Занесенные в Netbox устройства:  
-![.](
+![.](https://github.com/OlgaGladushko/2023_2024-network_programming-k34202-gladushko_o_v/blob/main/lab3/imgs/Netbox_devices.jpeg)  
+Далее для работы с Netbox через Ansible нужно было устонавить модуль netbox.netbox командой:
+```
+ansible-galaxy collection install netbox.netbox
+```
+Для сохранения всех данных из Netbox в отдельный файл был создан inventory-файл, в котром был указан плагин, адрес netbox, токен (предварительно создвнный через веб-интерфейс):
+```
+plugin: netbox.netbox.nb_inventory
+api_endpoint: http://130.193.42.42:8080/
+token: созданный_токен
+validate_certs: False
+config_context: False
+interfaces: True
+```
+Вся информация была сохранена в файл nb_inventory.yml с помощью команды:
+```
+ansible-inventory -v --list -y -i netbox_inventory.yml > nb_inventory.yml
+```
+Далее был написан сценарий для настройки CHR на основе данных из Netbox. Для этого полученный файл был изменен: в него добавлены переменные для подключения к устройствам из файла прошлой лабораторной работы, а также группа роутеров была названа devices вместо указанного по умолчанию ungrouped. Измененный файл: [inventory.yml](https://github.com/OlgaGladushko/2023_2024-network_programming-k34202-gladushko_o_v/blob/main/lab3/nb_inventory.yml).  
+В playbook были прописаны команды по изменению имени устройства на имя, указанное в Netbox,  а также по добавлению IP-адреса на устройство (адрес, выданный VPN):
+```
+- name: Configuration
+  hosts: devices
+  tasks:
+    - name: Set Name
+      community.routeros.command:
+        commands:
+          - /system identity set name="{{interfaces[0].device.name}}"
+    - name: Set IP-address
+      community.routeros.command:
+        commands:
+        - /interface bridge add name="{{interfaces[1].display}}"
+        - /ip address add address="{{interfaces[1].ip_addresses[0].address}}" interface="{{interfaces[1].display}}"
+```
+Обе таски были успешно выполнены, как можно увидеть ниже, именя устройств изменились (раньше они азывались MikroTik), а также добавились имена на новый созданный интерфейс:
+![.](https://github.com/OlgaGladushko/2023_2024-network_programming-k34202-gladushko_o_v/blob/main/lab3/imgs/chr1.jpg) ![.](https://github.com/OlgaGladushko/2023_2024-network_programming-k34202-gladushko_o_v/blob/main/lab3/imgs/CHR2.jpg)  
+
