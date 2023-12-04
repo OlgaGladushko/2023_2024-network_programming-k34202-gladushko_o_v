@@ -107,7 +107,7 @@ ansible-inventory -v --list -y -i netbox_inventory.yml > nb_inventory.yml
         - /interface bridge add name="{{interfaces[1].display}}"
         - /ip address add address="{{interfaces[1].ip_addresses[0].address}}" interface="{{interfaces[1].display}}"
 ```
-Обе таски были успешно выполнены, как можно увидеть ниже, именя устройств изменились (раньше они азывались MikroTik), а также добавились имена на новый созданный интерфейс:  
+Обе таски были успешно выполнены, как можно увидеть ниже, имена устройств изменились (раньше они назывались MikroTik), а также добавились адреса на новый созданный интерфейс:  
 ![.](https://github.com/OlgaGladushko/2023_2024-network_programming-k34202-gladushko_o_v/blob/main/lab3/imgs/chr1.jpg) ![.](https://github.com/OlgaGladushko/2023_2024-network_programming-k34202-gladushko_o_v/blob/main/lab3/imgs/CHR2.jpg)  
 Далее playbook был изменен для того, чтобы собрать серийный номер каждого устройства и внести его в Netbox:  
 ```
