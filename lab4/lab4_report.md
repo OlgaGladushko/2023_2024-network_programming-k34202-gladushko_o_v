@@ -20,7 +20,7 @@ Date of finished: 07.12.2023
 ![.](https://github.com/OlgaGladushko/2023_2024-network_programming-k34202-gladushko_o_v/blob/main/lab4/imgs/users.jpg)  
 
 ### Implementing Basic Forwarding  
-В первой части работы нужно было написать программу на P4, которая реализует базовую переадресацию с использованием следующей топологии  
+В первой части работы нужно было написать программу на P4, которая реализует базовую переадресацию с использованием следующей топологии:  
 ![.](https://github.com/OlgaGladushko/2023_2024-network_programming-k34202-gladushko_o_v/blob/main/lab4/imgs/topo1.png)  
 В каталоге задания уже был файл с неполным кодом basic.p4. После запуска mininet командой ```make run``` была попытка выполнения ping между хостами в топологии. Как видно, ни один пинг не прошел:  
 ![.](https://github.com/OlgaGladushko/2023_2024-network_programming-k34202-gladushko_o_v/blob/main/lab4/imgs/pingall_X.jpg)  
