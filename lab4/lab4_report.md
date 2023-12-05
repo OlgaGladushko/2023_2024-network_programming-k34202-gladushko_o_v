@@ -76,7 +76,7 @@ control MyDeparser(packet_out packet, in headers hdr) {
     }
 }
 ```
-Итоговый файл: basic.p4.  
+Итоговый файл: ![basic.p4](https://github.com/OlgaGladushko/2023_2024-network_programming-k34202-gladushko_o_v/blob/main/lab4/basic.p4).  
 Для проверки работоспособности снова был запущен mininet. На этот раз все пинги прошли успшно:
 ![.](https://github.com/OlgaGladushko/2023_2024-network_programming-k34202-gladushko_o_v/blob/main/lab4/imgs/ping%26pingall.jpg)  
 
@@ -162,7 +162,7 @@ control MyDeparser(packet_out packet, in headers hdr) {
     }
 }
 ```  
-Итоговый файл: basic_tunnel.p4.  
+Итоговый файл: ![basic_tunnel.p4](https://github.com/OlgaGladushko/2023_2024-network_programming-k34202-gladushko_o_v/blob/main/lab4/basic_tunnel.p4).  
 Снова был запущен mininet (перед этим предыдущий экземпляр был остновлен командой ```make stop```). Для тестирования были открыты терминалы для h1 и h2, на втором был запущен сервер командой ```./receive.py```. Сначала было проведено тестирование без туннелирования, с h1 было отправлено сообщение на h2:  
 ![.](https://github.com/OlgaGladushko/2023_2024-network_programming-k34202-gladushko_o_v/blob/main/lab4/imgs/test_without_tunnel.jpg)  
 Далее было проведено тестирование отправки сообщения с помощью туннелирования. Теперь можно увидеть заголовок туннеля, вместо ранее присутствующего TCP:
