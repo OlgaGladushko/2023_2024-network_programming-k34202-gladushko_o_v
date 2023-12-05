@@ -81,7 +81,7 @@ control MyDeparser(packet_out packet, in headers hdr) {
 ![.](https://github.com/OlgaGladushko/2023_2024-network_programming-k34202-gladushko_o_v/blob/main/lab4/imgs/ping%26pingall.jpg)  
 
 ### Implementing Basic Tunneling  
-Во второй части работы нужно было добавить подержку базового туннелирования. Использоваться будет следующая топология:  
+Во второй части работы нужно было добавить поддержку базового туннелирования. Использоваться будет следующая топология:  
 ![.](https://github.com/OlgaGladushko/2023_2024-network_programming-k34202-gladushko_o_v/blob/main/lab4/imgs/topo2.png)  
 Для этого задания также предоставлен файл с ключевыми элементами, содержащий добавленные в прошлом задании элементы. В начале кода была добавлена новая константа для туннелирования и новый тип заголовка. Парсер был дополнен функцией извлеченя заголовка mytunnel:  
 ```
