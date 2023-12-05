@@ -77,7 +77,7 @@ control MyDeparser(packet_out packet, in headers hdr) {
 }
 ```
 Итоговый файл: [basic.p4](https://github.com/OlgaGladushko/2023_2024-network_programming-k34202-gladushko_o_v/blob/main/lab4/basic.p4).  
-Для проверки работоспособности снова был запущен mininet. На этот раз все пинги прошли успшно:
+Для проверки работоспособности снова был запущен mininet. На этот раз все пинги прошли успешно:
 ![.](https://github.com/OlgaGladushko/2023_2024-network_programming-k34202-gladushko_o_v/blob/main/lab4/imgs/ping%26pingall.jpg)  
 
 ### Implementing Basic Tunneling  
